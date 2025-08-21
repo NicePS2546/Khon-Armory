@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khon Armory</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+</head>
+    <script>
+        fetch('/navbar')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar').innerHTML = data;
+            })
+            .catch(err => console.error('โหลด navbar ไม่ได้:', err));
+
+    </script>
+    <script src="./js/index.js" defer></script>
+
+<body class="bg-gray-900 text-white font-sans overflow-x-hidden">
+    <!-- Header -->
+    <div id="navbar"></div>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen bg-gradient-to-br from-gray-800 to-black flex items-center overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-1000 hover:scale-110" 
+             style="background-image: url('https://images.unsplash.com/photo-1681680012700-ef9b162f2f33?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+        </div>
+        <!-- Dark Overlay -->
+        <div class="absolute inset-0 bg-black opacity-70"></div>
+        <!-- Gradient Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black opacity-50"></div>
+        
+        <div class="container mx-auto px-4 z-10 parallax-element" data-speed="0.3">
+            <div class="max-w-3xl">
+                <h2 class="text-6xl font-bold mb-6 text-white drop-shadow-lg leading-tight">
+                    Khon <span class="text-red-500 animate-pulse">Armory</span>   
+                </h2>
+                <p>The door has a lock, the people of Nakhon have guns.</p>
+
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 opacity-0 animate-fade-in-up" style="animation-delay: 0.8s;">
+                    <button onclick="scrollToSection('search')" class="bg-red-600 hover:bg-red-700 px-8 py-4 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-2xl transform hover:scale-105 hover:shadow-red-500/25">
+                        ดูสินค้าทั้งหมด
+                        <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-2"></i>
+                    </button>
+                    <button onclick="scrollToSection('services')" class="border-2 border-white hover:bg-white hover:text-black px-8 py-4 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl backdrop-blur-sm transform hover:scale-105">
+                        เรียนรู้เพิ่มเติม
+                        <i class="fas fa-info-circle ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Down Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+            <div class="flex flex-col items-center cursor-pointer hover:text-red-400 transition-colors" onclick="scrollToSection('search')">
+                <span class="text-sm mb-2 opacity-70">เลื่อนลงเพื่อดูเพิ่มเติม</span>
+                <i class="fas fa-chevron-down text-2xl opacity-70"></i>
+            </div>
+        </div>
+    </section>
+
+
+   
+
+    <!-- Featured Products -->
+    <section id="products" class="py-16 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <h3 class="text-4xl font-bold text-center mb-12">สินค้าแนะนำ</h3>
+            <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <!-- Product Card 1 -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition-transform">
+    <div class="h-48 bg-gray-700 flex items-center justify-center">
+        <img src="https://www.pragueranger.cz/upload/20241114232408-9202-1200-675.webp" 
+             alt="Glock 17 Gen 5" 
+             class="h-full w-full object-cover">
+    </div>
+    <div class="p-6">
+        <h4 class="text-xl font-semibold mb-2">Glock 17 Gen 5</h4>
+        <p class="text-gray-400 mb-4">ปืนพกขนาด 9mm</p>
+        <div class="flex justify-between items-center">
+            <span class="text-2xl font-bold text-red-500">฿85,000</span>
+            <button class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded transition-colors">
+                เพิ่มเข้าตะกร้า
+            </button>
+        </div>
+    </div>
+</div>
+                <!-- Product Card 2 -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition-transform">
+                    <div class="h-48 bg-gray-700 flex items-center justify-center">
+                        <img src="https://www.sportsmanguncentre.co.uk/media/media/uploads/cz-512-tactical-blog-02.jpg" alt="CZ Rifle 512 TACTICAL" 
+                        class="h-full w-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-semibold mb-2">CZ Rifle 512 TACTICAL</h4>
+                        <p class="text-gray-400 mb-4"> ปืนไรเฟิลกึ่งอัตโนมัติลำกล้อง .22</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-red-500">฿120,000</span>
+                            <button class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded transition-colors">
+                                เพิ่มเข้าตะกร้า
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 3 -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition-transform">
+                    <div class="h-48 bg-gray-700 flex items-center justify-center">
+                        <img src="https://www.pragueranger.cz/upload/20250514113620-3368-1200-675.webp" alt="M1911 Colt Pistol" 
+                        class="h-full w-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-semibold mb-2">M1911 Colt Pistol</h4>
+                        <p class="text-gray-400 mb-4">ปืนกึ่งอัตโนมัติคลาสสิก .45</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-red-500">฿69,900</span>
+                            <button class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded transition-colors">
+                                เพิ่มเข้าตะกร้า
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 4 -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition-transform">
+                    <div class="h-48 bg-gray-700 flex items-center justify-center">
+                        <img src="https://www.americanrifleman.org/media/yinbajvh/m3ben.jpg" alt="Benelli M3"
+                        class="h-full w-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-semibold mb-2">Benelli M3</h4>
+                        <p class="text-gray-400 mb-4">ลูกซองปั๊มแอคชันกึ่งอัตโนมัติ</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-red-500">฿140,000</span>
+                            <button class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded transition-colors">
+                                เพิ่มเข้าตะกร้า
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product Card 5 -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition-transform">
+                    <div class="h-48 bg-gray-700 flex items-center justify-center">
+                        <img src="https://www.prodej-zbrani.cz/data/MMA/4050/f7585_2_GL33741_950x633.jpg" alt="Glock 19 Gen4"
+                        class="h-full w-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-semibold mb-2">Glock 19 Gen4</h4>
+                        <p class="text-gray-400 mb-4">ปืนกึ่งอัตโนมัติ 9mm</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-red-500">฿87,000</span>
+                            <button class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded transition-colors">
+                                เพิ่มเข้าตะกร้า
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product Card 6 -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition-transform">
+                    <div class="h-48 bg-gray-700 flex items-center justify-center">
+                        <img src="https://www.pragueranger.cz/upload/20241114232553-7336-1200-675.webp" alt="Remington 870"
+                        class="h-full w-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-semibold mb-2">Remington 870</h4>
+                        <p class="text-gray-400 mb-4">ลูกซองปั๊มแอคชัน</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-red-500">฿152,000</span>
+                            <button class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded transition-colors">
+                                เพิ่มเข้าตะกร้า
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product Card 7 -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition-transform">
+                    <div class="h-48 bg-gray-700 flex items-center justify-center">
+                        <img src="https://nationalinterest.org/wp-content/uploads/2019/12/Profile-Left-sm-1024x683-1024x683-1.jpg" alt="Desert Eagle"
+                        class="h-full w-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-semibold mb-2">Desert Eagle</h4>
+                        <p class="text-gray-400 mb-4">ปืนกึ่งอัตโนมัติขนาดใหญ่ .44 Magnum</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-red-500">฿180,000</span>
+                            <button class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded transition-colors">
+                                เพิ่มเข้าตะกร้า
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product Card 8 -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition-transform">
+                    <div class="h-48 bg-gray-700 flex items-center justify-center">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Sig_Sauer_P320_Modular_Handgun_System.jpg/1200px-Sig_Sauer_P320_Modular_Handgun_System.jpg" alt="Sig Sauer P320"
+                        class="h-full w-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-semibold mb-2">Sig Sauer P320</h4>
+                        <p class="text-gray-400 mb-4">ปืนพกโมดูลาร์เปลี่ยนขนาดด้ามและลำกล้องได้</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-red-500">฿90,000</span>
+                            <button data-price="90000" class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded transition-colors">
+                                เพิ่มเข้าตะกร้า
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <h3 class="text-4xl font-bold text-center mb-12">บริการของเรา</h3>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="bg-red-600 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-certificate text-2xl"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold mb-2">ใบอนุญาต</h4>
+                    <p class="text-gray-400">ช่วยเหลือขั้นตอนการขอใบอนุญาต</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-blue-600 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-tools text-2xl"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold mb-2">ซ่อมบำรุง</h4>
+                    <p class="text-gray-400">บริการซ่อมแซมและบำรุงรักษา</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-green-600 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-graduation-cap text-2xl"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold mb-2">ฝึกอบรม</h4>
+                    <p class="text-gray-400">คอร์สฝึกอบรมการใช้อาวุธปืน</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-purple-600 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-shipping-fast text-2xl"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold mb-2">จัดส่ง</h4>
+                    <p class="text-gray-400">บริการจัดส่งที่ปลอดภัย</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <div id="footer"></div>
+    <script src="./js/index.js" defer></script>
+
+    <script>
+        
+        
+       
+        
+        // Add smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                scrollToSection(targetId);
+            });
+        });
+
+        // Add mobile menu toggle
+        const mobileMenuBtn = document.createElement('button');
+        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+        mobileMenuBtn.className = 'md:hidden text-white text-xl';
+        
+        // Simple search functionality
+        document.querySelector('.bg-red-600.hover\\:bg-red-700.px-6')?.addEventListener('click', function() {
+            alert('ยังไม่ทำทีจ้า');
+        });
+
+        // Highlight active menu item based on scroll position
+        window.addEventListener('scroll', function() {
+            const sections = ['home', 'search', 'categories', 'services', 'contact'];
+            const navLinks = document.querySelectorAll('nav a[href^="#"]');
+            
+            let current = '';
+            sections.forEach(section => {
+                const element = document.getElementById(section);
+                if (element) {
+                    const rect = element.getBoundingClientRect();
+                    if (rect.top <= 100 && rect.bottom >= 100) {
+                        current = section;
+                    }
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('text-red-400');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('text-red-400');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

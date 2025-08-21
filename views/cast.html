@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ชำระเงินสำเร็จ - Khon Armory</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <style>
+        @keyframes checkmark {
+            0% {
+                transform: scale(0) rotate(0deg);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.2) rotate(180deg);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(1) rotate(360deg);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .checkmark-animate {
+            animation: checkmark 1s ease-out;
+        }
+        
+        .slide-in-up {
+            animation: slideInUp 0.8s ease-out;
+        }
+        
+        .pulse-animate {
+            animation: pulse 2s infinite;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        .stagger-1 { animation-delay: 0.2s; }
+        .stagger-2 { animation-delay: 0.4s; }
+        .stagger-3 { animation-delay: 0.6s; }
+        .stagger-4 { animation-delay: 0.8s; }
+        .stagger-5 { animation-delay: 1.0s; }
+        
+        .bg-gradient {
+            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+        }
+        
+        .success-glow {
+            box-shadow: 0 0 50px rgba(34, 197, 94, 0.3);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900 text-white font-sans bg-gradient min-h-screen">
+
+    <!-- Success Section -->
+    <section class="py-16 min-h-screen flex items-center justify-center">
+        <div class="container mx-auto px-4">
+            
+            <!-- Success Animation Container -->
+            <div class="max-w-4xl mx-auto text-center">
+                
+                <!-- Success Icon -->
+                <div class="mb-8 slide-in-up">
+                    <div class="inline-flex items-center justify-center w-32 h-32 bg-green-600 rounded-full success-glow mx-auto mb-6">
+                        <i class="fas fa-check text-6xl text-white checkmark-animate"></i>
+                    </div>
+                </div>
+                
+                <!-- Success Message -->
+                <div class="mb-12 slide-in-up stagger-1">
+                    <h1 class="text-5xl font-bold mb-4 bg-gradient-to-r from-green-400 to-green-600 bg-clip-text text-transparent">
+                        ชำระเงินสำเร็จ!
+                    </h1>
+                    <p class="text-2xl text-gray-300 mb-2">ขอบคุณสำหรับการสั่งซื้อ</p>
+                    <p class="text-lg text-gray-400">คำสั่งซื้อของคุณได้รับการยืนยันแล้ว</p>
+                </div>
+                
+                <!-- Order Details Card -->
+                <div class="bg-gray-800 rounded-2xl p-8 mb-8 slide-in-up stagger-2 border border-gray-700 max-w-2xl mx-auto">
+                    <div class="grid md:grid-cols-2 gap-6 text-left">
+                        
+                        <!-- Order Info -->
+                        <div>
+                            <h3 class="text-xl font-bold mb-4 text-green-400">
+                                <i class="fas fa-receipt mr-2"></i>รายละเอียดคำสั่งซื้อ
+                            </h3>
+                            <div class="space-y-3">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-400">หมายเลขคำสั่งซื้อ:</span>
+                                    <span class="font-mono text-white font-bold">#KA2024-001337</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-400">วันที่สั่งซื้อ:</span>
+                                    <span class="text-white" id="orderDate"></span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-400">จำนวนสินค้า:</span>
+                                    <span class="text-white font-semibold">7 ชิ้น</span>
+                                </div>
+                                <div class="flex justify-between items-center border-t border-gray-600 pt-3">
+                                    <span class="text-lg font-bold">ยอดรวม:</span>
+                                    <span class="text-2xl font-bold text-green-400">฿362,425</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Delivery Info -->
+                        <div>
+                            <h3 class="text-xl font-bold mb-4 text-blue-400">
+                                <i class="fas fa-truck mr-2"></i>ข้อมูลการจัดส่ง
+                            </h3>
+                            <div class="space-y-3">
+                                <div>
+                                    <span class="text-gray-400 block mb-1">ที่อยู่จัดส่ง:</span>
+                                    <div class="text-white text-sm">
+                                        <p>คุณ สมชาย ใจดี</p>
+                                        <p>123/45 หมู่บ้านทหาร ซอย 7</p>
+                                        <p>แขวงบางซื่อ เขตบางซื่อ</p>
+                                        <p>กรุงเทพฯ 10800</p>
+                                    </div>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-400">วิธีจัดส่ง:</span>
+                                    <span class="text-white">ขนส่งพิเศษ</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-400">ค่าจัดส่ง:</span>
+                                    <span class="text-green-400 font-semibold">ฟรี</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Timeline -->
+                <div class="mb-8 slide-in-up stagger-3">
+                    <h3 class="text-2xl font-bold mb-6">สถานะคำสั่งซื้อ</h3>
+                    <div class="max-w-3xl mx-auto">
+                        <div class="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+                            
+                            <!-- Step 1: Order Confirmed -->
+                            <div class="flex flex-col items-center text-center relative">
+                                <div class="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mb-3 pulse-animate">
+                                    <i class="fas fa-check text-2xl text-white"></i>
+                                </div>
+                                <h4 class="font-bold text-green-400">คำสั่งซื้อยืนยัน</h4>
+                                <p class="text-sm text-gray-400">เสร็จสิ้น</p>
+                                <div class="hidden md:block absolute top-8 left-16 w-24 h-0.5 bg-green-600"></div>
+                            </div>
+                            
+                            <!-- Step 2: Processing -->
+                            <div class="flex flex-col items-center text-center relative">
+                                <div class="w-16 h-16 bg-yellow-600 rounded-full flex items-center justify-center mb-3 pulse-animate">
+                                    <i class="fas fa-cog fa-spin text-2xl text-white"></i>
+                                </div>
+                                <h4 class="font-bold text-yellow-400">กำลังเตรียมสินค้า</h4>
+                                <p class="text-sm text-gray-400">ประมาณ 1-2 วัน</p>
+                                <div class="hidden md:block absolute top-8 left-16 w-24 h-0.5 bg-gray-600"></div>
+                            </div>
+                            
+                            <!-- Step 3: Shipping -->
+                            <div class="flex flex-col items-center text-center relative">
+                                <div class="w-16 h-16 bg-gray-600 rounded-full flex items-center justify-center mb-3">
+                                    <i class="fas fa-truck text-2xl text-gray-400"></i>
+                                </div>
+                                <h4 class="font-bold text-gray-400">จัดส่งสินค้า</h4>
+                                <p class="text-sm text-gray-500">2-3 วันถัดไป</p>
+                                <div class="hidden md:block absolute top-8 left-16 w-24 h-0.5 bg-gray-600"></div>
+                            </div>
+                            
+                            <!-- Step 4: Delivered -->
+                            <div class="flex flex-col items-center text-center">
+                                <div class="w-16 h-16 bg-gray-600 rounded-full flex items-center justify-center mb-3">
+                                    <i class="fas fa-home text-2xl text-gray-400"></i>
+                                </div>
+                                <h4 class="font-bold text-gray-400">ส่งถึงแล้ว</h4>
+                                <p class="text-sm text-gray-500">3-5 วันรวม</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ordered Items Summary -->
+                <div class="bg-gray-800 rounded-2xl p-6 mb-8 slide-in-up stagger-4 border border-gray-700">
+                    <h3 class="text-xl font-bold mb-4">
+                        <i class="fas fa-box mr-2 text-orange-400"></i>สินค้าที่สั่งซื้อ
+                    </h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div class="flex items-center space-x-3 p-3 bg-gray-700 rounded-lg">
+                            <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=60&h=60&fit=crop&crop=center" 
+                                 alt="AK-47" class="w-12 h-12 rounded object-cover">
+                            <div>
+                                <p class="font-semibold text-sm">AK-47</p>
+                                <p class="text-gray-400 text-xs">จำนวน: 2</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3 p-3 bg-gray-700 rounded-lg">
+                            <img src="https://images.unsplash.com/photo-1595590424283-b8f17842773f?w=60&h=60&fit=crop&crop=center" 
+                                 alt="M4A1" class="w-12 h-12 rounded object-cover">
+                            <div>
+                                <p class="font-semibold text-sm">M4A1</p>
+                                <p class="text-gray-400 text-xs">จำนวน: 1</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3 p-3 bg-gray-700 rounded-lg">
+                            <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?w=60&h=60&fit=crop&crop=center" 
+                                 alt="Tactical Vest" class="w-12 h-12 rounded object-cover">
+                            <div>
+                                <p class="font-semibold text-sm">Tactical Vest</p>
+                                <p class="text-gray-400 text-xs">จำนวน: 3</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3 p-3 bg-gray-700 rounded-lg">
+                            <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=60&h=60&fit=crop&crop=center" 
+                                 alt="Night Vision" class="w-12 h-12 rounded object-cover">
+                            <div>
+                                <p class="font-semibold text-sm">Night Vision</p>
+                                <p class="text-gray-400 text-xs">จำนวน: 1</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="space-y-4 slide-in-up stagger-5">
+                    <div class="grid md:grid-cols-3 gap-4 max-w-3xl mx-auto">
+                        
+                        <!-- Track Order -->
+                        <button onclick="trackOrder()" class="bg-blue-600 hover:bg-blue-700 py-4 px-6 rounded-xl font-bold text-lg transition-all transform hover:scale-105 hover:shadow-lg">
+                            <i class="fas fa-search mr-2"></i>ติดตามคำสั่งซื้อ
+                        </button>
+                        
+                        <!-- Download Receipt -->
+                        <button onclick="downloadReceipt()" class="bg-purple-600 hover:bg-purple-700 py-4 px-6 rounded-xl font-bold text-lg transition-all transform hover:scale-105 hover:shadow-lg">
+                            <i class="fas fa-download mr-2"></i>ดาวน์โหลดใบเสร็จ
+                        </button>
+                        
+                        <!-- Continue Shopping -->
+                        <a href="index.html" class="bg-red-600 hover:bg-red-700 py-4 px-6 rounded-xl font-bold text-lg transition-all transform hover:scale-105 hover:shadow-lg block text-center">
+                            <i class="fas fa-shopping-bag mr-2"></i>ช้อปปิ้งต่อ
+                        </a>
+                    </div>
+                    
+                    <!-- Contact Support -->
+                    <div class="mt-8">
+                        <p class="text-gray-400 mb-4">ต้องการความช่วยเหลือ?</p>
+                        <div class="flex flex-wrap justify-center gap-4">
+                            <a href="tel:+66-2-xxx-xxxx" class="text-green-400 hover:text-green-300 transition-colors">
+                                <i class="fas fa-phone mr-2"></i>02-XXX-XXXX
+                            </a>
+                            <a href="mailto:support@khonarmory.com" class="text-blue-400 hover:text-blue-300 transition-colors">
+                                <i class="fas fa-envelope mr-2"></i>support@khonarmory.com
+                            </a>
+                            <a href="#" class="text-purple-400 hover:text-purple-300 transition-colors">
+                                <i class="fab fa-line mr-2"></i>@KhonArmory
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Security Badge -->
+                <div class="mt-12 slide-in-up stagger-5">
+                    <div class="flex items-center justify-center space-x-6 text-gray-500 text-sm">
+                        <div class="flex items-center">
+                            <i class="fas fa-shield-alt text-green-500 mr-2"></i>
+                            ชำระเงินปลอดภัย
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-lock text-blue-500 mr-2"></i>
+                            ข้อมูลเข้ารหัส SSL
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-certificate text-yellow-500 mr-2"></i>
+                            รับประกันคุณภาพ
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Confetti Animation -->
+    <div id="confetti-container" class="fixed inset-0 pointer-events-none z-10"></div>
+
+    <script>
+        // Set current date
+        document.getElementById('orderDate').textContent = new Date().toLocaleDateString('th-TH', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+        
+        // Track order function
+        function trackOrder() {
+            alert('เปลี่ยนเส้นทางไปหน้าติดตามคำสั่งซื้อ...');
+            // window.location.href = 'track-order.html?order=KA2024-001337';
+        }
+        
+        // Download receipt function
+        function downloadReceipt() {
+            // Create a simple receipt content
+            const receiptContent = `
+                KHON ARMORY - ใบเสร็จรับเงิน
+                ================================
+                หมายเลขคำสั่งซื้อ: #KA2024-001337
+                วันที่: ${new Date().toLocaleDateString('th-TH')}
+                
+                รายการสินค้า:
+                - AK-47 Assault Rifle x2     ฿170,000
+                - M4A1 Carbine x1            ฿120,000
+                - Tactical Vest Level IIIA x3 ฿46,500
+                - Night Vision Goggles Gen 3 x1 ฿45,000
+                
+                ราคารวม:                     ฿381,500
+                ส่วนลด (5%):                 -฿19,075
+                ค่าจัดส่ง:                        ฟรี
+                ================================
+                ยอดรวมทั้งสิ้น:               ฿362,425
+                
+                ขอบคุณที่ใช้บริการ Khon Armory
+            `;
+            
+            // Create and download the receipt
+            const blob = new Blob([receiptContent], { type: 'text/plain;charset=utf-8' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'receipt-KA2024-001337.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+            
+            // Show success message
+            showSuccessMessage('ดาวน์โหลดใบเสร็จสำเร็จ!');
+        }
+        
+        // Success message function
+        function showSuccessMessage(message) {
+            const successMsg = document.createElement('div');
+            successMsg.className = 'fixed top-4 right-4 bg-green-600 text-white p-4 rounded-lg shadow-lg z-50 transform translate-x-full transition-transform';
+            successMsg.innerHTML = `
+                <div class="flex items-center">
+                    <i class="fas fa-check-circle mr-2"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+            
+            document.body.appendChild(successMsg);
+            
+            setTimeout(() => successMsg.classList.remove('translate-x-full'), 100);
+            setTimeout(() => {
+                successMsg.classList.add('translate-x-full');
+                setTimeout(() => successMsg.remove(), 300);
+            }, 3000);
+        }
+        
+        // Create confetti animation
+        function createConfetti() {
+            const container = document.getElementById('confetti-container');
+            const colors = ['#ef4444', '#10b981', '#3b82f6', '#f59e0b', '#8b5cf6'];
+            
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.position = 'absolute';
+                confetti.style.width = '10px';
+                confetti.style.height = '10px';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                confetti.style.animationDelay = Math.random() * 2 + 's';
+                confetti.style.animationName = 'fall';
+                confetti.style.animationTimingFunction = 'linear';
+                confetti.style.animationFillMode = 'forwards';
+                
+                container.appendChild(confetti);
+                
+                // Remove confetti after animation
+                setTimeout(() => {
+                    if (confetti.parentNode) {
+                        confetti.parentNode.removeChild(confetti);
+                    }
+                }, 5000);
+            }
+        }
+        
+        // Add fall animation for confetti
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fall {
+                0% {
+                    transform: translateY(-100vh) rotate(0deg);
+                    opacity: 1;
+                }
+                100% {
+                    transform: translateY(100vh) rotate(720deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Initialize confetti on page load
+        setTimeout(createConfetti, 500);
+        
+        // Add some interactive effects
+        document.querySelectorAll('button, a').forEach(element => {
+            element.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.05)';
+            });
+            
+            element.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+        
+        // Auto-refresh order status (simulation)
+        let statusStep = 1;
+        setInterval(() => {
+            if (statusStep < 4) {
+                statusStep++;
+                updateOrderStatus();
+            }
+        }, 10000); // Update every 10 seconds for demo
+        
+        function updateOrderStatus() {
+            // This would be connected to real backend in production
+            console.log('Order status updated to step:', statusStep);
+        }
+    </script>
+</body>
+</html>

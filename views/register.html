@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สมัครสมาชิก - Khon Armory</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <style>
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    @keyframes slideInRight {
+        from {
+            opacity: 0;
+            transform: translateX(50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    
+    @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.7; }
+    }
+    
+    @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-5px); }
+        75% { transform: translateX(5px); }
+    }
+    
+    .animate-fadeInUp {
+        animation: fadeInUp 0.8s ease-out forwards;
+    }
+    
+    .animate-slideInRight {
+        animation: slideInRight 0.8s ease-out forwards;
+    }
+    
+    .animate-pulse-slow {
+        animation: pulse 3s ease-in-out infinite;
+    }
+    
+    .animate-shake {
+        animation: shake 0.5s ease-in-out;
+    }
+    
+    .glass-effect {
+        backdrop-filter: blur(20px);
+        background: rgba(15, 15, 15, 0.75); /* มืดมากขึ้น และใสขึ้น */
+        border: 1px solid rgba(100, 100, 100, 0.3); /* ขอบเทาอ่อนแทนขาว */
+    }
+    
+    .input-glow:focus {
+        box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.3); /* โทนแดงอ่อนๆ */
+        transform: scale(1.02);
+    }
+    
+    .bg-gradient-custom {
+        background: linear-gradient(135deg, rgba(20, 20, 20, 0.95) 0%, rgba(40, 40, 40, 0.5) 50%, rgba(20, 20, 20, 0.98) 100%);
+    }
+    
+    .floating {
+        animation: float 4s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+        0%, 100% { transform: translateY(0) rotate(0deg); }
+        25% { transform: translateY(-15px) rotate(2deg); }
+        75% { transform: translateY(-5px) rotate(-1deg); }
+    }
+    
+    .progress-bar {
+        transition: width 0.3s ease-in-out;
+    }
+    
+    .strength-weak { color: #ef4444; }      /* สีแดงสดสำหรับสถานะแรงต่ำ */
+    .strength-medium { color: #f59e0b; }    /* สีส้ม */
+    .strength-strong { color: #10b981; }    /* สีเขียว */
+    
+    .step-indicator {
+        transition: all 0.3s ease-in-out;
+    }
+    
+    .step-active {
+        background: linear-gradient(135deg, #991b1b, #b91c1c); /* แดงเข้ม ลดความสด */
+        transform: scale(1.1);
+    }
+    
+    .checkbox-custom:checked {
+        background: linear-gradient(135deg, #991b1b, #b91c1c); /* โทนแดงเข้ม */
+    }
+</style>
+
+</head>
+
+<body class="min-h-screen relative overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" 
+         style="background-image: url('https://images.unsplash.com/photo-1584971390889-3aff7603e088?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+    </div>
+    
+    <!-- Dark Overlay -->
+    <div class="absolute inset-0 bg-gradient-custom"></div>
+    
+    <!-- Floating Elements -->
+    <div class="absolute top-16 right-10 floating opacity-20">
+        <i class="fas fa-user-plus text-red-500 text-6xl"></i>
+    </div>
+    <div class="absolute top-1/3 left-10 floating opacity-15" style="animation-delay: 1.5s;">
+        <i class="fas fa-certificate text-yellow-400 text-5xl"></i>
+    </div>
+    <div class="absolute bottom-32 right-20 floating opacity-10" style="animation-delay: 2.5s;">
+        <i class="fas fa-shield-check text-green-400 text-7xl"></i>
+    </div>
+    <div class="absolute top-1/2 left-1/4 floating opacity-5" style="animation-delay: 3s;">
+        <i class="fas fa-crosshairs text-white text-8xl"></i>
+    </div>
+
+    <!-- Header -->
+    <header class="relative z-50 p-4">
+        <nav class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-4 animate-slideInRight">
+                <i class="fas fa-crosshairs text-red-500 text-3xl animate-pulse-slow"></i>
+                <h1 class="text-3xl font-bold text-white">Khon Armory</h1>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="/login" class="text-white hover:text-red-400 transition-colors flex items-center space-x-2">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <span>เข้าสู่ระบบ</span>
+                </a>
+                <a href="/" class="text-white hover:text-red-400 transition-colors flex items-center space-x-2">
+                    <i class="fas fa-home"></i>
+                    <span>หน้าหลัก</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="flex items-center justify-center min-h-screen relative z-10 px-4 py-8">
+        <div class="w-full max-w-2xl">
+            <!-- Registration Card -->
+            <div class="glass-effect rounded-2xl shadow-2xl p-8 animate-fadeInUp">
+                <!-- Progress Indicator -->
+                <div class="mb-8">
+                    <div class="flex justify-between items-center mb-4">
+                        <div class="flex items-center space-x-4">
+                            <div class="step-indicator w-8 h-8 rounded-full bg-gray-600 flex items-center justify-center text-sm font-bold step-active">1</div>
+                            <div class="w-20 h-1 bg-gray-600"></div>
+                            <div class="step-indicator w-8 h-8 rounded-full bg-gray-600 flex items-center justify-center text-sm font-bold">2</div>
+                            <div class="w-20 h-1 bg-gray-600"></div>
+                            <div class="step-indicator w-8 h-8 rounded-full bg-gray-600 flex items-center justify-center text-sm font-bold">3</div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <h3 class="text-sm text-gray-400">ขั้นตอนที่ <span id="current-step">1</span> จาก 3</h3>
+                    </div>
+                </div>
+
+                <!-- Logo and Title -->
+                <div class="text-center mb-8">
+                    <div class="inline-flex items-center justify-center w-20 h-20 bg-red-600 rounded-full mb-4 animate-pulse-slow">
+                        <i class="fas fa-user-plus text-white text-2xl"></i>
+                    </div>
+                    <h2 class="text-3xl font-bold text-white mb-2">สมัครสมาชิก</h2>
+                    <p class="text-gray-300">เข้าร่วม Khon Armory วันนี้</p>
+                </div>
+
+                <!-- Multi-Step Form -->
+                <form id="registerForm" class="space-y-6" novalidate>
+                    <!-- Step 1: Basic Information -->
+                    <div id="step-1" class="step-content">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <!-- First Name -->
+                            <div class="space-y-2">
+                                <label for="firstName" class="block text-sm font-medium text-gray-300">
+                                    <i class="fas fa-user mr-2 text-red-400"></i>ชื่อจริง *
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="firstName" 
+                                    name="firstName"
+                                    required
+                                    class="w-full px-4 py-3 bg-gray-900/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-red-500 input-glow transition-all duration-300"
+                                    placeholder="กรอกชื่อจริง"
+                                >
+                                <span class="error-message text-red-400 text-xs hidden"></span>
+                            </div>
+
+                            <!-- Last Name -->
+                            <div class="space-y-2">
+                                <label for="lastName" class="block text-sm font-medium text-gray-300">
+                                    <i class="fas fa-user mr-2 text-red-400"></i>นามสกุล *
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="lastName" 
+                                    name="lastName"
+                                    required
+                                    class="w-full px-4 py-3 bg-gray-900/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-red-500 input-glow transition-all duration-300"
+                                    placeholder="กรอกนามสกุล"
+                                >
+                                <span class="error-message text-red-400 text-xs hidden"></span>
+                            </div>
+
+                            <!-- Email -->
+                            <div class="space-y-2">
+                                <label for="email" class="block text-sm font-medium text-gray-300">
+                                    <i class="fas fa-envelope mr-2 text-red-400"></i>อีเมล *
+                                </label>
+                                <input 
+                                    type="email" 
+                                    id="email" 
+                                    name="email"
+                                    required
+                                    class="w-full px-4 py-3 bg-gray-900/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-red-500 input-glow transition-all duration-300"
+                                    placeholder="example@email.com"
+                                >
+                                <span class="error-message text-red-400 text-xs hidden"></span>
+                            </div>
+
+                            <!-- Phone -->
+                            <div class="space-y-2">
+                                <label for="phone" class="block text-sm font-medium text-gray-300">
+                                    <i class="fas fa-phone mr-2 text-red-400"></i>เบอร์โทรศัพท์ *
+                                </label>
+                                <input 
+                                    type="tel" 
+                                    id="phone" 
+                                    name="phone"
+                                    required
+                                    class="w-full px-4 py-3 bg-gray-900/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-red-500 input-glow transition-all duration-300"
+                                    placeholder="0XX-XXX-XXXX"
+                                >
+                                <span class="error-message text-red-400 text-xs hidden"></span>
+                            </div>
+
+                            <!-- Date of Birth -->
+                            <div class="space-y-2">
+                                <label for="birthDate" class="block text-sm font-medium text-gray-300">
+                                    <i class="fas fa-calendar mr-2 text-red-400"></i>วันเกิด *
+                                </label>
+                                <input 
+                                    type="date" 
+                                    id="birthDate" 
+                                    name="birthDate"
+                                    required
+                                    class="w-full px-4 py-3 bg-gray-900/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-red-500 input-glow transition-all duration-300"
+                                >
+                                <span class="error-message text-red-400 text-xs hidden"></span>
+                            </div>
+
+                            <!-- ID Number -->
+                            <div class="space-y-2">
+                                <label for="idNumber" class="block text-sm font-medium text-gray-300">
+                                    <i class="fas fa-id-card mr-2 text-red-400"></i>เลขบัตรประจำตัวประชาชน *
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="idNumber" 
+                                    name="idNumber"
+                                    required
+                                    maxlength="13"
+                                    pattern="\d{13}"
+                                    class="w-full px-4 py-3 bg-gray-900/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-red-500 input-glow transition-all duration-300"
+                                    placeholder="เลขบัตรประชาชน 13 หลัก"
+                                >
+                                <span class="error-message text-red-400 text-xs hidden"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Account & Security -->
+                    <div id="step-2" class="step-content hidden">
+                        <div class="space-y-6">
+                            <!-- Username -->
+                            <div class="space-y-2">
+                                <label for="username" class="block text-sm font-medium text-gray-300">
+                                    <i class="fas fa-at mr-2 text-red-400"></i>ชื่อผู้ใช้ *
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="username" 
+                                    name="username"
+                                    required
+                                    class="w-full px-4 py-3 bg-gray-900/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-red-500 input-glow transition-all duration-300"
+                                    placeholder="กรอกชื่อผู้ใช้"
+                                >
+                                <span class="error-message text-red-400 text-xs hidden"></span>
+                                <div class="flex items-center space-x-2 text-xs">
+                                    <i class="fas fa-info-circle text-blue-400"></i>
+                                    <span class="text-gray-400">ชื่อผู้ใช้ต้องมีอย่างน้อย 4 ตัวอักษร</span>
+                                </div>
+                            </div>
+
+                            <!-- Password -->
+                            <div class="space-y-2">
+                                <label for="password" class="block text-sm font-medium text-gray-300">
+                                    <i class="fas fa-lock mr-2 text-red-400"></i>รหัสผ่าน *
+                                </label>
+                                <div class="relative">
+                                    <input 
+                                        type="password" 
+                                        id="password" 
+                                        name="password"
+                                        required
+                                        class="w-full px-4 py-3 bg-gray-900/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-red-500 input-glow transition-all duration-300 pr-12"
+                                        placeholder="กรอกรหัสผ่าน"
+                                    >
+                                    <button 
+                                        type="button" 
+                                        id="togglePassword"
+                                        class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white transition-colors"
+                                    >
+                                        <i class="fas fa-eye" id="eyeIcon"></i>
+                                    </button>
+                                </div>
+                                <!-- Password Strength Indicator -->
+                                <div class="space-y-2">
+                                    <div class="flex space-x-1">
+                                        <div class="h-2 w-full bg-gray-600 rounded"></div>
+                                        <div class="h-2 w-full bg-gray-600 rounded"></div>
+                                        <div class="h-2 w-full bg-gray-600 rounded"></div>
+                                        <div class="h-2 w-full bg-gray-600 rounded"></div>
+                                    </div>
+                                    <div class="flex justify-between text-xs">
+                                        <span id="password-strength" class="text-gray-400">ความแข็งแกร่งของรหัสผ่าน</span>
+                                        <span id="password-score" class="text-gray-400"></span>
+                                    </div>
+                                </div>
+                                <span class="error-message text-red-400 text-xs hidden"></span>
+                            </div>
+
+                            <!-- Confirm Password -->
+                            <div class="space-y-2">
+                                <label for="confirmPassword" class="block text-sm font-medium text-gray-300">
+                                    <i class="fas fa-lock mr-2 text-red-400"></i>ยืนยันรหัสผ่าน *
+                                </label>
+                                <div class="relative">
+                                    <input 
+                                        type="password" 
+                                        id="confirmPassword" 
+                                        name="confirmPassword"
+                                        required
+                                        class="w-full px-4 py-3 bg-gray-900/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-red-500 input-glow transition-all duration-300 pr-12"
+                                        placeholder="ยืนยันรหัสผ่าน"
+                                    >
+                                    <button 
+                                        type="button" 
+                                        id="toggleConfirmPassword"
+                                        class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white transition-colors"
+                                    >
+                                        <i class="fas fa-eye" id="eyeIconConfirm"></i>
+                                    </button>
+                                </div>
+                                <span class="error-message text-red-400 text-xs hidden"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Terms & Verification -->
+                    <div id="step-3" class="step-content hidden">
+                        <div class="space-y-6">
+                            <!-- Profile Picture -->
+                            <div class="space-y-2 text-center">
+                                <label class="block text-sm font-medium text-gray-300 mb-4">
+                                    <i class="fas fa-camera mr-2 text-red-400"></i>รูปโปรไฟล์ (ไม่บังคับ)
+                                </label>
+                                <div class="relative inline-block">
+                                    <div class="w-32 h-32 bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-4 overflow-hidden">
+                                        <img id="profile-preview" class="w-full h-full object-cover hidden">
+                                        <i class="fas fa-user text-4xl text-gray-400" id="default-avatar"></i>
+                                    </div>
+                                    <input type="file" id="profilePicture" name="profilePicture" accept="image/*" class="hidden">
+                                    <button type="button" onclick="document.getElementById('profilePicture').click()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors">
+                                        <i class="fas fa-upload mr-2"></i>อัปโหลดรูป
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Terms and Conditions -->
+                            <div class="space-y-4">
+                                <div class="flex items-start space-x-3">
+                                    <input type="checkbox" id="terms" name="terms" required class="checkbox-custom mt-1 rounded text-red-500 focus:ring-red-500 bg-gray-900 border-gray-600">
+                                    <label for="terms" class="text-sm text-gray-300 leading-relaxed">
+                                        ฉันยอมรับ <a href="#" class="text-red-400 hover:text-red-300">ข้อกำหนดและเงื่อนไข</a> 
+                                        รวมถึง <a href="#" class="text-red-400 hover:text-red-300">นโยบายความเป็นส่วนตัว</a> 
+                                        ของ Khon Armory
+                                    </label>
+                                </div>
+
+                                <div class="flex items-start space-x-3">
+                                    <input type="checkbox" id="age" name="age" required class="checkbox-custom mt-1 rounded text-red-500 focus:ring-red-500 bg-gray-900 border-gray-600">
+                                    <label for="age" class="text-sm text-gray-300">
+                                        ฉันยืนยันว่ามีอายุ 20 ปีบริบูรณ์แล้ว และมีสิทธิ์ในการครอบครองอาวุธปืนตามกฎหมาย
+                                    </label>
+                                </div>
+
+                                <div class="flex items-start space-x-3">
+                                    <input type="checkbox" id="newsletter" name="newsletter" class="checkbox-custom mt-1 rounded text-red-500 focus:ring-red-500 bg-gray-900 border-gray-600">
+                                    <label for="newsletter" class="text-sm text-gray-300">
+                                        ฉันต้องการรับข่าวสารและข้อเสนอพิเศษจาก Khon Armory
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Navigation Buttons -->
+                    <div class="flex justify-between pt-6 border-t border-gray-600">
+                        <button 
+                            type="button"
+                            id="prevBtn"
+                            class="bg-gray-700 hover:bg-gray-600 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 hidden"
+                        >
+                            <i class="fas fa-arrow-left mr-2"></i>ย้อนกลับ
+                        </button>
+
+                        <button 
+                            type="button"
+                            id="nextBtn"
+                            class="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold py-3 px-6 rounded-lg transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-red-500/25 ml-auto"
+                        >
+                            ถัดไป<i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+
+                        <button 
+                            type="submit"
+                            id="submitBtn"
+                            class="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold py-3 px-6 rounded-lg transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-green-500/25 hidden ml-auto"
+                        >
+                            <i class="fas fa-user-check mr-2"></i>สมัครสมาชิก
+                        </button>
+                    </div>
+
+                    <!-- Social Registration -->
+                    <div class="pt-6 border-t border-gray-600">
+                        <div class="relative mb-6">
+                            <div class="absolute inset-0 flex items-center">
+                                <div class="w-full border-t border-gray-600"></div>
+                            </div>
+                            <div class="relative flex justify-center text-sm">
+                                <span class="px-4 bg-transparent text-gray-400">หรือสมัครด้วย</span>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <button 
+                                type="button"
+                                class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition-all duration-300 flex items-center justify-center space-x-2"
+                            >
+                                <i class="fab fa-facebook-f"></i>
+                                <span>Facebook</span>
+                            </button>
+                            
+                            <button 
+                                type="button"
+                                class="bg-white hover:bg-gray-100 text-gray-900 font-medium py-3 px-4 rounded-lg transition-all duration-300 flex items-center justify-center space-x-2"
+                            >
+                                <i class="fab fa-google text-red-500"></i>
+                                <span>Google</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Login Link -->
+                    <div class="text-center pt-4 border-t border-gray-600">
+                        <p class="text-gray-400">
+                            มีบัญชีอยู่แล้ว? 
+                            <a href="/login.html" class="text-red-400 hover:text-red-300 font-medium transition-colors">
+                                เข้าสู่ระบบ
+                            </a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 hidden">
+        <div class="text-center">
+            <div class="animate-spin rounded-full h-16 w-16 border-4 border-red-500 border-t-transparent mx-auto mb-4"></div>
+            <p class="text-white text-lg">กำลังสมัครสมาชิก...</p>
+        </div>
+    </div>
+
+
+<script src="./js/register.js" defer></script>
+
+</body>
+</html>

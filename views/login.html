@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>เข้าสู่ระบบ - Khon Armory</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+<link rel="stylesheet" href="./css/login.css" >
+
+</head>
+<body class="min-h-screen relative overflow-hidden">
+    <!-- Background Image -->
+    <div
+        class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style="background-image: url('https://images.unsplash.com/photo-1584971390889-3aff7603e088?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"
+    ></div>
+    <!-- Dark Overlay -->
+    <div class="absolute inset-0 bg-gradient-custom"></div>
+    <!-- Floating Elements -->
+    <div class="absolute top-20 left-10 floating opacity-20">
+        <i class="fas fa-crosshairs text-red-500 text-6xl"></i>
+    </div>
+    <div class="absolute top-40 right-20 floating opacity-10" style="animation-delay: 1s;">
+        <i class="fas fa-shield-alt text-white text-8xl"></i>
+    </div>
+    <div class="absolute bottom-20 left-20 floating opacity-15" style="animation-delay: 2s;">
+        <i class="fas fa-bullseye text-red-400 text-7xl"></i>
+    </div>
+    <!-- Header -->
+    <header class="relative z-50 p-4">
+        <nav class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-4 animate-slideInLeft">
+                <i class="fas fa-crosshairs text-red-500 text-3xl animate-glow"></i>
+                <h1 class="text-3xl font-bold text-white">Khon Armory</h1>
+            </div>
+            <a href="/" class="text-white hover:text-red-400 transition-colors flex items-center space-x-2">
+                <i class="fas fa-arrow-left"></i>
+                <span>กลับหน้าหลัก</span>
+            </a>
+        </nav>
+    </header>
+    <!-- Main Content -->
+    <div class="flex items-center justify-center min-h-screen relative z-10 px-4">
+        <div class="w-full max-w-md">
+            <!-- Login Card -->
+            <div class="glass-effect rounded-2xl shadow-2xl p-8 animate-fadeInUp">
+                <!-- Logo and Title -->
+                <div class="text-center mb-8">
+                    <div
+                        class="inline-flex items-center justify-center w-20 h-20 bg-red-600 rounded-full mb-4 animate-glow"
+                    >
+                        <i class="fas fa-user-shield text-white text-2xl"></i>
+                    </div>
+                    <h2 class="text-3xl font-bold text-white mb-2">เข้าสู่ระบบ</h2>
+                    <p class="text-gray-300">ยินดีต้อนรับกลับสู่ Khon Armory</p>
+                </div>
+                <!-- Login Form -->
+                <form id="loginForm" class="space-y-6">
+                    <!-- Username/Email -->
+                    <div class="space-y-2">
+                        <label for="username" class="block text-sm font-medium text-gray-300"
+                            ><i class="fas fa-user mr-2 text-red-400"></i>ชื่อผู้ใช้</label
+                        >
+                        <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            required
+                            class="w-full px-4 py-3 bg-gray-900/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-red-500 input-glow transition-all duration-300"
+                            placeholder="กรอกชื่อผู้ใช้"
+                        />
+                    </div>
+                    <!-- Password -->
+                    <div class="space-y-2">
+                        <label for="password" class="block text-sm font-medium text-gray-300"
+                            ><i class="fas fa-lock mr-2 text-red-400"></i>รหัสผ่าน</label
+                        >
+                        <div class="relative">
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                required
+                                class="w-full px-4 py-3 bg-gray-900/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-red-500 input-glow transition-all duration-300 pr-12"
+                                placeholder="กรอกรหัสผ่าน"
+                            />
+                            <button
+                                type="button"
+                                id="togglePassword"
+                                class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white transition-colors"
+                            >
+                                <i class="fas fa-eye" id="eyeIcon"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Remember Me & Forgot Password -->
+                    <div class="flex items-center justify-between text-sm">
+                        <label class="flex items-center text-gray-300 cursor-pointer">
+                            <input
+                                type="checkbox"
+                                id="remember"
+                                class="mr-2 rounded bg-gray-900 border-gray-600 text-red-500 focus:ring-red-500"
+                            />
+                            จดจำการเข้าสู่ระบบ
+                        </label>
+                        <a href="#" class="text-red-400 hover:text-red-300 transition-colors">ลืมรหัสผ่าน?</a>
+                    </div>
+                    <!-- Login Button -->
+                    <button
+                        type="submit"
+                        class="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold py-3 px-4 rounded-lg transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-red-500/25"
+                    >
+                        <i class="fas fa-sign-in-alt mr-2"></i>เข้าสู่ระบบ
+                    </button>
+                    <!-- Divider -->
+                    <div class="relative my-6">
+                        <div class="absolute inset-0 flex items-center">
+                            <div class="w-full border-t border-gray-600"></div>
+                        </div>
+                        <div class="relative flex justify-center text-sm">
+                            <span class="px-4 bg-transparent text-gray-400">หรือ</span>
+                        </div>
+                    </div>
+                    <!-- Social Login -->
+                    <div class="space-y-3">
+                        <button
+                            type="button"
+                            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition-all duration-300 flex items-center justify-center space-x-2"
+                        >
+                            <i class="fab fa-facebook-f"></i>
+                            <span>เข้าสู่ระบบด้วย Facebook</span>
+                        </button>
+                        <button
+                            type="button"
+                            class="w-full bg-white hover:bg-gray-100 text-gray-900 font-medium py-3 px-4 rounded-lg transition-all duration-300 flex items-center justify-center space-x-2"
+                        >
+                            <i class="fab fa-google text-red-500"></i>
+                            <span>เข้าสู่ระบบด้วย Google</span>
+                        </button>
+                    </div>
+                    <!-- Register Link -->
+                    <div class="text-center pt-4 border-t border-gray-600">
+                        <p class="text-gray-400">
+                            ยังไม่มีบัญชี?
+                            <a href="register" class="text-red-400 hover:text-red-300 font-medium transition-colors">สมัครสมาชิก</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+            <!-- Security Notice -->
+            <div class="mt-6 text-center">
+                <div class="glass-effect rounded-lg p-4 animate-fadeInUp" style="animation-delay: 0.3s;">
+                    <div class="flex items-center justify-center space-x-2 text-green-400 mb-2">
+                        <i class="fas fa-shield-alt"></i>
+                        <span class="text-sm font-medium">การเชื่อมต่อปลอดภัย</span>
+                    </div>
+                    <p class="text-xs text-gray-400">
+                        ข้อมูลของคุณได้รับการป้องกันด้วยระบบเข้ารหัส SSL 256-bit
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Loading Overlay -->
+    <div
+        id="loadingOverlay"
+        class="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 hidden"
+    >
+        <div class="text-center">
+            <div
+                class="animate-spin rounded-full h-16 w-16 border-4 border-red-500 border-t-transparent mx-auto mb-4"
+            ></div>
+            <p class="text-white text-lg">กำลังเข้าสู่ระบบ...</p>
+        </div>
+    </div>
+
+    <script src="./js/login.js"></script>
+</body>
+</html>
